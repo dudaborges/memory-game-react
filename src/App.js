@@ -5,12 +5,12 @@ import cover from './assets/cover.png'
 import SingleCards from './components/SingleCards';
 
 const cardImages = [
-  {"src": "/assets/monse-1.png"},
-  {"src": "/assets/cesar-1.png"},
-  {"src": "/assets/jamal-1.png"},
-  {"src": "/assets/ruby-1.png"},
-  {"src": "/assets/jasmin-1.png"},
-  {"src": "/assets/own-my-block-1.png"}
+  {"src": "/assets/monse-1.png", matched: false},
+  {"src": "/assets/cesar-1.png", matched: false},
+  {"src": "/assets/jamal-1.png", matched: false},
+  {"src": "/assets/ruby-1.png", matched: false},
+  {"src": "/assets/jasmin-1.png", matched: false},
+  {"src": "/assets/own-my-block-1.png", matched: false}
 
 ]
 
@@ -41,14 +41,25 @@ function App() {
     if(choiceOne && choiceTwo) {
 
       if(choiceOne.src === choiceTwo.src) {
-        console.log('cartas iguais')
+        // console.log('cartas iguais')
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if(card.src === choiceOne.src) {
+              return {...card, matched: true}
+            }else{
+              return card
+            }
+          })
+        })
         resetTurn()
       } else{
-        console.log('essas cartas não são iguais')
+        // console.log('essas cartas não são iguais')
         resetTurn()
       }
     }
   }, [choiceOne, choiceTwo])
+
+  console.log(cards)
 
   // reseta as chances e aumenta um turno
   const resetTurn = () => {
