@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import capa from './assets/capa.png'
 import cover from './assets/cover.png'
+import SingleCards from './components/SingleCards';
 
 const cardImages = [
   {"src": "/assets/monse-1.png"},
@@ -18,6 +19,8 @@ function App() {
   const [cards, setCards] = useState([])
   const [turns, setTurns] = useState(0)
   const [showCapa, setShowCapa] = useState(true)
+  const [choiceOne, setChoiceOne] = useState(null)
+  const [choiceTwo, setChoiceTwo] = useState(null)
 
   const shuffleCards = () => {
     const shuffleCards = [...cardImages, ...cardImages]
@@ -29,8 +32,15 @@ function App() {
     setShowCapa(false)
   }
 
-  console.log(cards, turns)
+  const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
+  }
 
+  const resetTurn = () => {
+    setChoiceOne(null)
+    setChoiceTwo(null)
+    setTurns(prevTurns => prevTurns + 1)
+  }
 
   return (
     <div className='App'>
@@ -43,10 +53,7 @@ function App() {
 
       <div className='card-grid'>
         {cards.map(card => (
-          <div className='card' key={card.id}>
-            <img className='front' src={card.src}/>
-            <img className='back' src={cover}/>
-          </div>
+          <SingleCards key={card.id} card={card} cover={cover} handleChoice={handleChoice} />
         ))}
       </div>
 

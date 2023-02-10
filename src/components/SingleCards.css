@@ -1,0 +1,14 @@
+.card{
+    position: relative;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+.card img {
+    /* width: 100%; */
+    display: block;
+    border: 2px solid #F0C160;
+    border-radius: 6px;
+    
+}
