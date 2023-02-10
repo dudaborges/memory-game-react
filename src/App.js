@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import capa from './assets/capa.png'
 import cover from './assets/cover.png'
@@ -36,6 +36,21 @@ function App() {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
 
+  // verifica se as cartas selecionais são iguais ou não
+  useEffect(() => {
+    if(choiceOne && choiceTwo) {
+
+      if(choiceOne.src === choiceTwo.src) {
+        console.log('cartas iguais')
+        resetTurn()
+      } else{
+        console.log('essas cartas não são iguais')
+        resetTurn()
+      }
+    }
+  }, [choiceOne, choiceTwo])
+
+  // reseta as chances e aumenta um turno
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)

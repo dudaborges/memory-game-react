@@ -8,7 +8,6 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-
 button{
     display: block;
     background: none;
@@ -36,3 +35,4 @@ div.capa{
 img.img-capa{
 width: 100%;
 }
+
