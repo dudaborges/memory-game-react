@@ -8,13 +8,41 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
+@media (max-width: 490px){
+    .card-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    img.back, img.front{
+        width: 110px;
+    }
+}
+
+@media (max-width: 580px) and (min-width: 490px){
+    .card-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 650px)and (min-width: 580px){
+    .card-grid{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    img.back, img.front{
+        width: 130px;
+    }
+}
+
+
+
 button{
     display: block;
-    background: none;
+    background: #F0C160;
     border: 2px solid #F0C160;
-    padding: 6px 12px;
-    border-radius: 4px;
-    color: #fff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #840E5A;
     font-weight: bold;
     cursor: pointer;
     font-size: 1em;
@@ -34,5 +62,10 @@ div.capa{
   
 img.img-capa{
 width: 100%;
+}
+
+p{
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
